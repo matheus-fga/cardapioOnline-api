@@ -1,0 +1,14 @@
+{
+  "name": "cardapioonlineapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:matheus-fga/cardapioOnline-api.git",
+  "author": "Matheus Silva <matheussilva.fga@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.3"
+  }
+}
