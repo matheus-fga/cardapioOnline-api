@@ -6,6 +6,12 @@ class ProductsRepository {
 
     return products;
   }
+
+  async findById(id: string) {
+    const product = await Product.findById(id);
+
+    return product;
+  }
 }
 
 export default new ProductsRepository();
