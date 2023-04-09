@@ -8,9 +8,7 @@ export const router = Router();
 router.get('/category', CategoryController.index);
 
 router.get('/product', ProductController.index);
-router.get('/product/:id', (request, response) => {
-  response.send('OK');
-});
+router.get('/product/:id', ProductController.show);
 router.post('/product', (request, response) => {
   response.send('OK');
 });
