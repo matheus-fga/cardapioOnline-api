@@ -1,10 +1,10 @@
 import { Router } from 'express';
 
+import CategoryController from './app/controllers/CategoryController';
+
 export const router = Router();
 
-router.get('/category', (request, response) => {
-  response.send('OK');
-});
+router.get('/category', CategoryController.index);
 
 router.get('/product', (request, response) => {
   response.send('OK');
