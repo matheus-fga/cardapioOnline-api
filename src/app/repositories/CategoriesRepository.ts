@@ -2,7 +2,7 @@ import { Category } from '../models/Category';
 
 class CategoriesRepository {
   async findAll() {
-    const categories = await Category.find();
+    const categories = await Category.find().populate('parent');
 
     return categories;
   }
