@@ -18,7 +18,7 @@ class ProductController {
       return res.status(400).json({ error: 'Invalid product id' });
     }
 
-    const product = ProductsRepository.findById(id);
+    const product = await ProductsRepository.findById(id);
 
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
