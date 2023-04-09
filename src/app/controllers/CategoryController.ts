@@ -1,8 +1,12 @@
 import { Request, Response } from 'express';
 
+import CategoriesRepository from '../repositories/CategoriesRepository';
+
 class CategoryController {
   async index(req: Request, res: Response) {
-    res.send('CategoryControler: index');
+    const categories = await CategoriesRepository.findAll();
+
+    res.json(categories);
   }
 }
 
