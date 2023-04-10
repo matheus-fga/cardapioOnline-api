@@ -2,8 +2,11 @@ import { Router } from 'express';
 
 import CategoryController from './app/controllers/CategoryController';
 import ProductController from './app/controllers/ProductController';
+import AuthController from './app/controllers/AuthController';
 
 export const router = Router();
+
+router.post('/auth/login', AuthController.authenticate);
 
 router.get('/category', CategoryController.index);
 
