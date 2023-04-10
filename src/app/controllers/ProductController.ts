@@ -68,6 +68,14 @@ class ProductController {
       return res.status(400).json({ error: 'Invalid product id' });
     }
 
+    if (price !== undefined && price <= 0) {
+      return res.status(400).json({ error: 'price must be grater than 0' });
+    }
+
+    if (categories && !isValidCategoriesIds(categories)) {
+      return res.status(400).json({ error: 'Invalid category id' });
+    }
+
     const productExists = await ProductsRepository.findById(id);
 
     if (!productExists) {
