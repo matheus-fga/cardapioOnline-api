@@ -25,6 +25,10 @@ class ProductsRepository {
 
     return updatedProduct;
   }
+
+  async delete(id: string) {
+    await Product.findByIdAndDelete(id);
+  }
 }
 
 export default new ProductsRepository();
