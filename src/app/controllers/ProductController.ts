@@ -58,6 +58,31 @@ class ProductController {
 
     res.status(201).json(newProduct);
   }
+
+  async update(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const { name, qty, price, categories } = req.body as ProductBody;
+
+    if (!isValidObjectId(id)) {
+      return res.status(400).json({ error: 'Invalid product id' });
+    }
+
+    const productExists = await ProductsRepository.findById(id);
+
+    if (!productExists) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    const updatedProduct = await ProductsRepository.update(id, {
+      name,
+      qty,
+      price,
+      categories
+    });
+
+    res.json(updatedProduct);
+  }
 }
 
 export default new ProductController();

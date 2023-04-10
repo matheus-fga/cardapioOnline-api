@@ -10,9 +10,7 @@ router.get('/category', CategoryController.index);
 router.get('/product', ProductController.index);
 router.get('/product/:id', ProductController.show);
 router.post('/product', ProductController.store);
-router.patch('/product/:id', (request, response) => {
-  response.send('OK');
-});
+router.patch('/product/:id', ProductController.update);
 router.delete('/product/:id', (request, response) => {
   response.send('OK');
 });
