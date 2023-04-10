@@ -83,6 +83,24 @@ class ProductController {
 
     res.json(updatedProduct);
   }
+
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+
+    if (!isValidObjectId(id)) {
+      return res.status(400).json({ error: 'Invalid product id' });
+    }
+
+    const productExists = await ProductsRepository.findById(id);
+
+    if (!productExists) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    await ProductsRepository.delete(id);
+
+    res.sendStatus(204);
+  }
 }
 
 export default new ProductController();

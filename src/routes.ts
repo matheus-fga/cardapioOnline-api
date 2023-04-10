@@ -11,7 +11,5 @@ router.get('/product', ProductController.index);
 router.get('/product/:id', ProductController.show);
 router.post('/product', ProductController.store);
 router.patch('/product/:id', ProductController.update);
-router.delete('/product/:id', (request, response) => {
-  response.send('OK');
-});
+router.delete('/product/:id', ProductController.delete);
 
