@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
-
 import { isValidObjectId } from 'mongoose';
 
-import ProductsRepository from '../repositories/ProductsRepository';
+import { ProductBody } from '../types/ProductBody';
+import { isValidCategoriesIds } from '../utils/isValidCategoriesIds';
 
+import ProductsRepository from '../repositories/ProductsRepository';
 class ProductController {
   async index(req: Request, res: Response) {
     const products = await ProductsRepository.findAll();
@@ -25,6 +26,37 @@ class ProductController {
     }
 
     res.json(product);
+  }
+
+  async store(req: Request, res: Response) {
+    const { name, qty, price, categories } = req.body as ProductBody;
+
+    if (!name) {
+      return res.status(400).json({ error: 'Name is required' });
+    }
+
+    if (price === undefined) {
+      return res.status(400).json({ error: 'Price is required' });
+    } else if (price <= 0) {
+      return res.status(400).json({ error: 'price must be grater than 0' });
+    }
+
+    if (!categories || categories.length <= 0) {
+      return res.status(400).json({ error: 'provide at least one category id' });
+    }
+
+    if (!isValidCategoriesIds(categories)) {
+      return res.status(400).json({ error: 'Invalid category id' });
+    }
+
+    const newProduct = await ProductsRepository.create({
+      name,
+      qty,
+      price,
+      categories
+    });
+
+    res.status(201).json(newProduct);
   }
 }
 

@@ -8,6 +8,7 @@ mongoose.connect('mongodb://localhost:27017')
     const app = express();
     const port = 3001;
 
+    app.use(express.json());
     app.use(router);
 
     app.listen(port, () => {
@@ -15,6 +16,6 @@ mongoose.connect('mongodb://localhost:27017')
     });
 
   })
-  .catch(() => console.log('Erro ao conectar ao mongo'));
+  .catch((error) => console.log(error));
 
 
