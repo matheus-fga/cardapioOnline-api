@@ -26,13 +26,13 @@ git clone https://github.com/matheus-fga/cardapioOnline-api.git
 # enter the folder
 cd cardapioOnline-api/
 
-# Install dependencies
+# install dependencies
 yarn
 
-# With a mongoDB instance running locally on port: 27017, run:
+# with a mongoDB instance running locally on port: 27017, run:
 yarn db:seed
 
-# And then, run:
+# and then, run:
 yarn dev
 
 ```
@@ -71,7 +71,7 @@ Product: <br /> <br />
    <code> > METHOD: PATCH </code> <br />
    <code> > BODY: {"name":"Massa Carbonara","qty":2,"price":59.8,"categories": ["64321bf82ac1526ee4e1c322", "643471b507eb0237b8756db5"] } </code> <br />
    <code> > URL: http://localhost:3001/product/56800afbf34739a94da174f0 </code> <br />
-   <code> > RETURN: success or error </code> <br />
+   <code> > RETURN: The product updated </code> <br />
    <code> > OBSERVATIONS: for this request, use product id in url (56800afbf34739a94da174f0) </code>
 <br />
 <br />
