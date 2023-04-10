@@ -7,11 +7,12 @@ export const Product = model('Product', new Schema({
   },
   qty: {
     type: Number,
-    required: true,
+    default: 1,
   },
   price: {
     type: Number,
     required: true,
+    min: 0,
   },
   categories: {
     required: true,
