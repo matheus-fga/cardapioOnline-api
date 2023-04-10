@@ -19,6 +19,12 @@ class ProductsRepository {
 
     return newProduct;
   }
+
+  async update(id: string, product: ProductBody) {
+    const updatedProduct = await Product.findByIdAndUpdate(id, product, { new: true });
+
+    return updatedProduct;
+  }
 }
 
 export default new ProductsRepository();
